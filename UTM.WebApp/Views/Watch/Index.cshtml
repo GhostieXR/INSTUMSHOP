@@ -1,0 +1,42 @@
+﻿@model IEnumerable<UTM.Domain.Watch>
+
+@{
+    ViewBag.Title = "Watches";
+    Layout = "../Shared/_AdminPanelLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Watches</h2>
+    <p>
+        <a href="@Url.Action("Create")" class="btn btn-primary">Create New Watch</a>
+    </p>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var watch in Model)
+        {
+            <tr>
+                <td>@watch.Id</td>
+                <td>@watch.Name</td>
+                <td>@watch.Brand</td>
+                <td>@watch.Price</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = watch.Id })" class="btn btn-sm btn-primary">Edit</a>
+                    @if (User.IsInRole("Admin"))
+                    {
+                    <a href="@Url.Action("Delete", new { id = watch.Id })" class="btn btn-sm btn-danger">Delete</a>
+                    }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

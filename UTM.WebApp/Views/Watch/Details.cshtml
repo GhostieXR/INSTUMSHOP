@@ -1,0 +1,34 @@
+﻿@model UTM.Domain.Watch
+
+@{
+    ViewBag.Title = "Watch Details";
+    Layout = "../Shared/_AdminPanelLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Watch Details</h2>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Id)
+        <p class="form-control-static">@Model.Id</p>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name)
+        <p class="form-control-static">@Model.Name</p>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Brand)
+        <p class="form-control-static">@Model.Brand</p>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Price)
+        <p class="form-control-static">@Model.Price</p>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ImageUrl)
+        <img src="@Model.ImageUrl" class="img-thumbnail" alt="Watch Image">
+    </div>
+
+    <a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-primary">Edit</a>
+    <a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>
+</div>
