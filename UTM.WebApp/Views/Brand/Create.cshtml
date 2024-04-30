@@ -1,0 +1,21 @@
+﻿@model UTM.Domain.Brand
+
+@{
+    ViewBag.Title = "Create Brand";
+    Layout = "../Shared/_AdminPanelLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Create Brand</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name)
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+        <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
+    }
+</div>

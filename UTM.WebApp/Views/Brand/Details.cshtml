@@ -1,0 +1,22 @@
+﻿@model UTM.Domain.Brand
+
+@{
+    ViewBag.Title = "Brand Details";
+    Layout = "../Shared/_AdminPanelLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Brand Details</h2>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BrandId)
+        <p class="form-control-static">@Model.BrandId</p>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name)
+        <p class="form-control-static">@Model.Name</p>
+    </div>
+
+    <a href="@Url.Action("Edit", new { id = Model.BrandId })" class="btn btn-primary">Edit</a>
+    <a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>
+</div>

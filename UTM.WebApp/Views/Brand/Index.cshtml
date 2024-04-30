@@ -1,0 +1,38 @@
+﻿@model IEnumerable<UTM.Domain.Brand>
+
+@{
+    ViewBag.Title = "Brands";
+    Layout = "../Shared/_AdminPanelLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Brands</h2>
+    <p>
+        <a href="@Url.Action("Create")" class="btn btn-primary">Create New Brand</a>
+    </p>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var brand in Model)
+        {
+            <tr>
+                <td>@brand.BrandId</td>
+                <td>@brand.Name</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = brand.BrandId })" class="btn btn-sm btn-primary">Edit</a>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a href="@Url.Action("Delete", new { id = brand.BrandId })" class="btn btn-sm btn-danger">Delete</a>
+                    }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
