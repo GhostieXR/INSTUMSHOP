@@ -1,0 +1,22 @@
+﻿@model UTM.Domain.Category
+
+@{
+    ViewBag.Title = "Delete Category";
+    Layout = "../Shared/_AdminPanelLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Delete Category</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.CategoryId)
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name)
+            <p class="form-control-static">@Model.Name</p>
+        </div>
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
+    }
+</div>

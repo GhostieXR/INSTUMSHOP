@@ -1,0 +1,38 @@
+﻿@model IEnumerable<UTM.Domain.Category>
+
+@{
+    ViewBag.Title = "Categories";
+    Layout = "../Shared/_AdminPanelLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Categories</h2>
+    <p>
+        <a href="@Url.Action("Create")" class="btn btn-primary">Create New Category</a>
+    </p>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var category in Model)
+        {
+            <tr>
+                <td>@category.CategoryId</td>
+                <td>@category.Name</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = category.CategoryId })" class="btn btn-sm btn-primary">Edit</a>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a href="@Url.Action("Delete", new { id = category.CategoryId })" class="btn btn-sm btn-danger">Delete</a>
+                    }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
